@@ -1,0 +1,6 @@
+.project
+.settings
+.classpath
+*.bak
+target
+work
