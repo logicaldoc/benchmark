@@ -1,0 +1,31 @@
+Export in CSV format:
+
+SELECT 'ld_id','ld_lastmodified','ld_deleted','ld_immutable','ld_customid','ld_version','ld_fileversion','ld_date','ld_creation','ld_publisher','ld_publisherid','ld_creator','ld_creatorid','ld_status','ld_type','ld_lockuserid','ld_language','ld_filename','ld_filesize','ld_indexed','ld_barcoded','ld_signed','ld_digest','ld_folderid','ld_templateid','ld_exportstatus','ld_exportid','ld_exportname','ld_exportversion','ld_comment','ld_workflowstatus','ld_published','ld_startpublishing','ld_stoppublishing','ld_transactionid','ld_tgs','ld_extresid','ld_tenantid','ld_recordversion','ld_pages','ld_stamped','ld_nature','ld_formid','ld_lockuser','ld_password','ld_workflowstatusdisp'
+  FROM dual
+ UNION
+SELECT ld_id,ld_lastmodified,ld_deleted,ld_immutable,ld_customid,ld_version,ld_fileversion,ld_date,ld_creation,ld_publisher,ld_publisherid,ld_creator,ld_creatorid,ld_status,ld_type,ld_lockuserid,ld_language,ld_filename,ld_filesize,ld_indexed,ld_barcoded,ld_signed,ld_digest,ld_folderid,ld_templateid,ld_exportstatus,ld_exportid,ld_exportname,ld_exportversion,ld_comment,ld_workflowstatus,ld_published,ld_startpublishing,ld_stoppublishing,ld_transactionid,ld_tgs,ld_extresid,ld_tenantid,ld_recordversion,ld_pages,ld_stamped,ld_nature,ld_formid,ld_lockuser,ld_password,ld_workflowstatusdisp
+  INTO OUTFILE 'ld_document.csv'
+  FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '\\'
+  LINES TERMINATED BY '\r\n'
+ FROM ld_document
+where ld_deleted=0 and ld_docref is null;
+
+SELECT 'ld_docid','ld_tenantid','ld_tag'
+  FROM dual
+ UNION
+SELECT ld_docid,ld_tag,ld_tenantid
+  INTO OUTFILE 'ld_tag.csv'
+  FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '\\'
+  LINES TERMINATED BY '\r\n'
+ FROM ld_tag;
+where ld_deleted=0; 
+
+SELECT 'ld_id','ld_lastmodified','ld_deleted','ld_name','ld_parentid','ld_securityref','ld_description','ld_type','ld_creation','ld_creator','ld_creatorid','ld_templateid','ld_templocked','ld_deleteuserid','ld_tenantid','ld_recordversion','ld_position','ld_hidden','ld_quotadocs','ld_quotasize','ld_foldref','ld_storage','ld_maxversions','ld_color','ld_tgs','ld_qthreshold','ld_qrecipients','ld_level','ld_deleteuser'
+  FROM dual
+ UNION
+SELECT ld_id,ld_lastmodified,ld_deleted,ld_name,ld_parentid,ld_securityref,ld_description,ld_type,ld_creation,ld_creator,ld_creatorid,ld_templateid,ld_templocked,ld_deleteuserid,ld_tenantid,ld_recordversion,ld_position,ld_hidden,ld_quotadocs,ld_quotasize,ld_foldref,ld_storage,ld_maxversions,ld_color,ld_tgs,ld_qthreshold,ld_qrecipients,ld_level,ld_deleteuser
+  INTO OUTFILE 'ld_document.csv'
+  FIELDS TERMINATED BY ',' OPTIONALLY ENCLOSED BY '"' ESCAPED BY '\\'
+  LINES TERMINATED BY '\r\n'
+ FROM ld_folder
+where ld_deleted=0;

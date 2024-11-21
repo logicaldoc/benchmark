@@ -1,0 +1,20 @@
+Export ld_document in CSV format:
+
+SELECT 'ld_id','ld_lastmodified','ld_deleted','ld_immutable','ld_customid','ld_version','ld_fileversion','ld_date','ld_creation','ld_publisher','ld_publisherid','ld_creator','ld_creatorid','ld_status','ld_type','ld_lockuserid','ld_language','ld_filename','ld_filesize','ld_indexed','ld_barcoded','ld_signed','ld_digest','ld_folderid','ld_templateid','ld_exportstatus','ld_exportid','ld_exportname','ld_exportversion','ld_docref','ld_deleteuserid','ld_rating','ld_comment','ld_workflowstatus','ld_published','ld_startpublishing','ld_stoppublishing','ld_transactionid','ld_tgs','ld_extresid','ld_tenantid','ld_recordversion','ld_docreftype','ld_pages','ld_stamped','ld_nature','ld_formid','ld_lockuser','ld_password','ld_workflowstatusdisp','ld_deleteuser'
+ UNION
+SELECT ld_id,ld_lastmodified,ld_deleted,ld_immutable,ld_customid,ld_version,ld_fileversion,ld_date,ld_creation,ld_publisher,ld_publisherid,ld_creator,ld_creatorid,ld_status,ld_type,ld_lockuserid,ld_language,ld_filename,ld_filesize,ld_indexed,ld_barcoded,ld_signed,ld_digest,ld_folderid,ld_templateid,ld_exportstatus,ld_exportid,ld_exportname,ld_exportversion,ld_docref,ld_deleteuserid,ld_rating,ld_comment,ld_workflowstatus,ld_published,ld_startpublishing,ld_stoppublishing,ld_transactionid,ld_tgs,ld_extresid,ld_tenantid,ld_recordversion,ld_docreftype,ld_pages,ld_stamped,ld_nature,ld_formid,ld_lockuser,ld_password,ld_workflowstatusdisp,ld_deleteuser
+  INTO OUTFILE 'c:/tmp/ld_document.csv'
+       FIELDS TERMINATED BY ',' ENCLOSED BY '"' ESCAPED BY '\\'
+       LINES TERMINATED BY '\r\n'
+ FROM ld_document
+where ld_deleted=0 and ld_docref is null;
+
+
+Import from CSV to ld_document:
+
+LOAD DATA INFILE 'c:/tmp/ld_document.csv' 
+INTO TABLE ld_document
+FIELDS TERMINATED BY ',' ENCLOSED BY '"' ESCAPED BY '\\'
+LINES TERMINATED BY '\r\n'
+IGNORE 1 ROWS
+(ld_id,ld_lastmodified,ld_deleted,ld_immutable,ld_customid,ld_version,ld_fileversion,ld_date,ld_creation,ld_publisher,ld_publisherid,ld_creator,ld_creatorid,ld_status,ld_type,ld_lockuserid,ld_language,ld_filename,ld_filesize,ld_indexed,ld_barcoded,ld_signed,ld_digest,ld_folderid,ld_templateid,ld_exportstatus,ld_exportid,ld_exportname,ld_exportversion,ld_docref,ld_deleteuserid,ld_rating,ld_comment,ld_workflowstatus,ld_published,ld_startpublishing,ld_stoppublishing,ld_transactionid,ld_tgs,ld_extresid,ld_tenantid,ld_recordversion,ld_docreftype,ld_pages,ld_stamped,ld_nature,ld_formid,ld_lockuser,ld_password,ld_workflowstatusdisp,ld_deleteuser)

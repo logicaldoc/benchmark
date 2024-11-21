@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration packages="com.logicaldoc.util.log4j">
+	<Properties>
+		<Property name="root">logs</Property>
+		<Property name="pattern">%d{dd.MM.yyyy HH:mm:ss,SSS} %-5p  (%c:%4L) -- %m%n</Property>
+		<Property name="dateformat">ISO8601</Property>
+	</Properties>
+		
+	<Appenders>	
+		<RollingFile name="BENCHMARK" fileName="${root}/benchmark.log" filePattern="${root}/benchmark.log.%i">
+				<PatternLayout>
+					<Pattern>${pattern}</Pattern>
+				</PatternLayout>
+				<Policies>
+					<SizeBasedTriggeringPolicy size="5 MB" />
+				</Policies>
+				<DefaultRolloverStrategy max="5" />
+		</RollingFile>
+		
+		<RollingFile name="CSV" fileName="${root}/csv.log" filePattern="${root}/csv.log.%i">
+				<PatternLayout>
+					<Pattern>${pattern}</Pattern>
+				</PatternLayout>
+				<Policies>
+					<SizeBasedTriggeringPolicy size="1 MB" />
+				</Policies>
+				<DefaultRolloverStrategy max="1" />
+		</RollingFile>
+		
+		<Console name="CONSOLE" target="SYSTEM_OUT">
+			<PatternLayout pattern="%m%n" />
+		</Console>
+	</Appenders>
+
+	<Loggers>
+		<Logger name="org.apache.cxf" level="fatal" additivity="false">
+			<Appender-Ref ref="BENCHMARK" />
+		</Logger>
+
+		<Logger name="com.logicaldoc.bm" level="info" additivity="false">
+			<Appender-Ref ref="BENCHMARK" />
+		</Logger>
+		
+		<Logger name="com.logicaldoc.bm.csv" level="info" additivity="true">
+			<Appender-Ref ref="CSV" />
+		</Logger>
+		
+		<Root level="info">
+			<AppenderRef ref="BENCHMARK" />
+			<AppenderRef ref="CONSOLE" />
+		</Root>
+	</Loggers>
+	
+</Configuration>

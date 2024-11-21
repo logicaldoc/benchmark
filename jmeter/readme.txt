@@ -1,0 +1,1 @@
+A collection of JMeter test plans to stress a LogicalDOC installation

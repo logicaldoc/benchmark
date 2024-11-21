@@ -1,0 +1,10 @@
+<?xml version="1.0" ?>
+<!DOCTYPE plugin PUBLIC "-//JPF//Java Plug-in Manifest 1.0" "http://jpf.sourceforge.net/plugin_1_0.dtd">
+<plugin id="logicaldoc-benchmark" version="8.3.4" class="com.logicaldoc.bm.BenchmarkPlugin">
+	<requires>
+		<import plugin-id="logicaldoc-core" />
+	</requires>
+	<extension plugin-id="logicaldoc-core" point-id="Task" id="benchmarkTask">
+		<parameter id="name" value="Benchmark" />
+	</extension>
+</plugin>
