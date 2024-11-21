@@ -1,15 +1,13 @@
 LogicalDOC Benchmark is a tool to load and test LogicalDOC performances on a single-server environment or on a Cluster.
 
-You have to configure the tool by editing the file conf/context.properties
+You have to configure the tool by editing the file **conf/context.properties**
 
 To launch the tests, make sure to have Java installed and do as follows:
 
-Windows:
-```Shell
-C> load.bat
-```
+Windows:<br/>
+`C> load.bat`
 
-Linux:
+Linux:<br/>
 `#> load.sh`
 
 ## Notes: ##
@@ -34,5 +32,5 @@ e.g: Update.threads=2
 	The path from the GUI is: Administration, System, General, tab Run level, then select the Bulkload option from the drop-down and click Save.
 4. You can use 2 or more PC to load into the same LD system
 5. You can use the benchmark tool to test performance of a LogicalDOC cluster.
- 	You can do this in 2 ways, either by editing the load configuration file and specifying in the *session.url* property a list with the addresses of the node URLs of the LogicalDOC cluster, or by using 2 loading nodes (PC) where each node that runs the benchmark loads on a different node of the LogicalDOC cluster.	
+ 	You can do this in 2 ways, either by editing the load configuration file and specifying in the **session.url** property a list with the addresses of the node URLs of the LogicalDOC cluster, or by using 2 loading nodes (PC) where each node that runs the benchmark loads on a different node of the LogicalDOC cluster.	
 	
