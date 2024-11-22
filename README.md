@@ -13,14 +13,10 @@ Linux:<br/>
 ## Notes: ##
 1. put some files in folder /docs because that is where the tool pick files to feed LogicalDOC
     (otherwise change the docs path in context.properties). No directories there, just files.	
-2. by default only the Upload loader is enabled, if you want to enable the others change the value of key loaders in conf/context.properties
-```Shell
-e.g: loaders=Upload,RandomUpload,ListFolders,Search,Update
-```
-3. for each loader you can specify of many parallel workers to run concurrently, just specify the number of concurrent threads in conf/context.properties
-```Shell
-e.g: Update.threads=2
-```
+2. by default only the Upload loader is enabled, if you want to enable the others change the value of key loaders in conf/context.properties<br/>
+`e.g: loaders=Upload,RandomUpload,ListFolders,Search,Update`
+3. for each loader you can specify of many parallel workers to run concurrently, just specify the number of concurrent threads in conf/context.properties<br/>
+`e.g: Update.threads=2`
 	
 	
 ## Performance notes: ##
